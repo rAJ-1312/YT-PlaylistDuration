@@ -2,6 +2,7 @@ import isodate
 from googleapiclient.discovery import build
 import os
 from dotenv import load_dotenv
+import sys
 
 load_dotenv()
 
@@ -9,17 +10,26 @@ key = os.getenv("API_KEY")
 
 youtube = build('youtube', 'v3', developerKey=key)
 
-YT_channel = "schafer5"
 
+defaultChannel = "schafer5"
+
+try:
+    YT_channel = sys.argv[1]
+except:
+    YT_channel = defaultChannel
 
 request = youtube.channels().list(
     part="contentDetails,contentOwnerDetails,id,statistics",
     forUsername = YT_channel
 )
 
+
 response = request.execute()
 
-channel_ID = response['items'][0]['id']
+try:
+    channel_ID = response['items'][0]['id']
+except KeyError as e:
+    sys.exit("No playlists!")
 
 # print(json.dumps(response,indent=4))
 # print('Channel ID: ',channel_ID)
@@ -136,7 +146,7 @@ def formorethan30(TotalvideoIDs):
 
 total_playlists = 0
 
-print(f'PN\t\t\t\t\tPlaylist ID\t\t\t\t\t\t\tDuration(HH:MM:SS)\t\tTotal Videos ')
+print(f'PN\tPlaylist LINK\t\t\t\t\t\t\t\t\t\t\tDuration(HH:MM:SS)\t\tTotal Videos ')
 
 for playlist_ID in PlayList_IDs:
     total_playlists+=1
@@ -170,10 +180,12 @@ for playlist_ID in PlayList_IDs:
     minutes = int(minutes)
     seconds = int(seconds)
 
+    pl_link = f'https://www.youtube.com/playlist?list={playlist_ID}'
 
-    print(total_playlists,end=".\t\t")
-    print('%34s' %playlist_ID, end = "\t\t\t\t\t",)
-    print(f'{hours:02d}:{minutes:02d}:{seconds:02d}',end = "\t\t\t\t")
+
+    print(total_playlists,end=".\t")
+    print('%34s' %pl_link, end = "\t\t\t",)
+    print(f'{hours:02d}:{minutes:02d}:{seconds:02d}',end = "\t\t\t")
     print(f'{total_videos:02d}')
 
 
