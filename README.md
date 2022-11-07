@@ -69,7 +69,7 @@ touch .env
 API_KEY = *******************************
 ```
 
-1. Run the program passing the channel id as argument
+5. Run the program passing the channel id as argument
 ```sh
 python3 main.py *****************
 e.g. python3 main.py UCCezIgC97PvUuR4_gbFUs5g
