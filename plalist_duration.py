@@ -27,6 +27,7 @@ except IndexError as e:
     print("Using Default channel_ID")
 
 print(channel_ID)
+print()
 
 # print(json.dumps(response,indent=4))
 # print('Channel ID: ',channel_ID)
@@ -37,11 +38,13 @@ videosCount = 0
 
 PlayList_IDs = []
 
-pandasPlaylist_ID = None
+playlist_Name = dict()
+
+# pandasPlaylist_ID = None
 
 while True:
     request_pl = youtube.playlists().list(
-        part="contentDetails,id",
+        part="contentDetails,id,snippet",
         channelId=channel_ID,
         pageToken=nextPageToken,
         maxResults=20
@@ -55,9 +58,11 @@ while True:
         if vc>videosCount:
             videosCount = vc
             max_video_playlist_ID = videos['id']
-        if vc==11:
-            pandasPlaylist_ID = videos['id']
+        # if vc==11:
+        #     pandasPlaylist_ID = videos['id']
         PlayList_IDs.append(videos['id'])
+        
+        playlist_Name[videos['id']] = videos['snippet']['title']
 
     nextPageToken = response_pl.get('nextPageToken')
 
@@ -141,13 +146,14 @@ def formorethan30(TotalvideoIDs):
 #     print(len(video),end=" ")
 
 
-total_playlists = 0
-
-print(f'PN\tPlaylist LINK\t\t\t\t\t\t\t\t\t\t\tDuration(HH:MM:SS)\t\tTotal Videos ')
+# total_playlists = 0
 
 if PlayList_IDs:
+
+    # print(f'Name\tPlaylist LINK\t\t\t\t\t\t\t\t\t\t\tDuration(HH:MM:SS)\t\tTotal Videos ')
+
     for playlist_ID in PlayList_IDs:
-        total_playlists+=1
+        # total_playlists+=1
         total_seconds = 0
         total_videos = 0
 
@@ -181,10 +187,12 @@ if PlayList_IDs:
         pl_link = f'https://www.youtube.com/playlist?list={playlist_ID}'
 
 
-        print(total_playlists,end=".\t")
-        print('%34s' %pl_link, end = "\t\t\t",)
-        print(f'{hours:02d}:{minutes:02d}:{seconds:02d}',end = "\t\t\t")
-        print(f'{total_videos:02d}')
+        print(f'Name: {playlist_Name[playlist_ID]}')
+        print(f'Link: {pl_link}')
+        print(f'Duration(HH:MM:SS): {hours:02d}:{minutes:02d}:{seconds:02d}')
+        print(f'Total Videos: {total_videos}')
+        print()
+
 
 else:
     print("No Playlists!")
