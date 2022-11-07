@@ -11,25 +11,22 @@ key = os.getenv("API_KEY")
 youtube = build('youtube', 'v3', developerKey=key)
 
 
-defaultChannel = "schafer5"
+# request = youtube.channels().list(
+#     part="contentDetails,contentOwnerDetails,id,statistics",
+#     forUsername = YT_channel
+# )
+
+
+# response = request.execute()
+
+channel_ID = "UCCezIgC97PvUuR4_gbFUs5g"
 
 try:
-    YT_channel = sys.argv[1]
-except:
-    YT_channel = defaultChannel
+    channel_ID = sys.argv[1]
+except IndexError as e:
+    print("Using Default channel_ID")
 
-request = youtube.channels().list(
-    part="contentDetails,contentOwnerDetails,id,statistics",
-    forUsername = YT_channel
-)
-
-
-response = request.execute()
-
-try:
-    channel_ID = response['items'][0]['id']
-except KeyError as e:
-    sys.exit("No playlists!")
+print(channel_ID)
 
 # print(json.dumps(response,indent=4))
 # print('Channel ID: ',channel_ID)
@@ -148,50 +145,48 @@ total_playlists = 0
 
 print(f'PN\tPlaylist LINK\t\t\t\t\t\t\t\t\t\t\tDuration(HH:MM:SS)\t\tTotal Videos ')
 
-for playlist_ID in PlayList_IDs:
-    total_playlists+=1
-    total_seconds = 0
-    total_videos = 0
+if PlayList_IDs:
+    for playlist_ID in PlayList_IDs:
+        total_playlists+=1
+        total_seconds = 0
+        total_videos = 0
 
-    TotalVideoIDs = findVideoIDs(playlist_ID)
+        TotalVideoIDs = findVideoIDs(playlist_ID)
 
-    if len(TotalVideoIDs)>30:
-        total_seconds,total_videos = formorethan30(TotalVideoIDs)
-    else:
-        nextPageToken = None
+        if len(TotalVideoIDs)>30:
+            total_seconds,total_videos = formorethan30(TotalVideoIDs)
+        else:
+            nextPageToken = None
 
-        vd_request = youtube.videos().list(
-            part="contentDetails,id,statistics",
-            id=','.join(TotalVideoIDs)
-        )
+            vd_request = youtube.videos().list(
+                part="contentDetails,id,statistics",
+                id=','.join(TotalVideoIDs)
+            )
 
-        vd_response = vd_request.execute()
+            vd_response = vd_request.execute()
 
-        for items in vd_response['items']:
-            total_videos += 1
-            duration = items['contentDetails']['duration']
-            time = isodate.parse_duration(duration)
-            total_seconds += time.total_seconds()
+            for items in vd_response['items']:
+                total_videos += 1
+                duration = items['contentDetails']['duration']
+                time = isodate.parse_duration(duration)
+                total_seconds += time.total_seconds()
 
-    minutes, seconds = divmod(total_seconds, 60)
-    hours, minutes = divmod(minutes, 60)
+        minutes, seconds = divmod(total_seconds, 60)
+        hours, minutes = divmod(minutes, 60)
 
-    hours = int(hours)
-    minutes = int(minutes)
-    seconds = int(seconds)
+        hours = int(hours)
+        minutes = int(minutes)
+        seconds = int(seconds)
 
-    pl_link = f'https://www.youtube.com/playlist?list={playlist_ID}'
-
-
-    print(total_playlists,end=".\t")
-    print('%34s' %pl_link, end = "\t\t\t",)
-    print(f'{hours:02d}:{minutes:02d}:{seconds:02d}',end = "\t\t\t")
-    print(f'{total_videos:02d}')
+        pl_link = f'https://www.youtube.com/playlist?list={playlist_ID}'
 
 
+        print(total_playlists,end=".\t")
+        print('%34s' %pl_link, end = "\t\t\t",)
+        print(f'{hours:02d}:{minutes:02d}:{seconds:02d}',end = "\t\t\t")
+        print(f'{total_videos:02d}')
+
+else:
+    print("No Playlists!")
 
 
-# print(json.dumps(response_pl,indent=4))
-
-
-# playlist_ID = request_pl['items'][]
