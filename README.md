@@ -5,7 +5,7 @@
 ## Table of Contents
 - [YT-PlaylistDuration](#yt-playlistduration)
   - [Table of Contents](#table-of-contents)
-  - [About The Project](#-about-the-project)
+  - [## About The Project](#-about-the-project)
   - [Built with](#built-with)
   - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -69,7 +69,7 @@ touch .env
 API_KEY = *******************************
 ```
 
-1. Run the program passing the channel id as argument
+1. Run the script passing the channel id as argument
 ```sh
 python3 main.py *****************
 e.g. python3 main.py UCCezIgC97PvUuR4_gbFUs5g
