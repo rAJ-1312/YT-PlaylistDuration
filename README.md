@@ -83,7 +83,16 @@ e.g. python3 main.py UCCezIgC97PvUuR4_gbFUs5g
 <br>
 
 <p align="center">
-  <img align="center" src="docs.png?raw=true" alt="bot.jpg" width="1030">
+  <img align="center" src="docs.png?raw=true" alt="OOPS" width="1030">
+</p>
+<p align="center">
+  <img align="center" src="page1.png?raw=true" alt="OOPS" width="1030">
+</p>
+<p align="center">
+  <img align="center" src="page2.png?raw=true" alt="OOPS" width="1030">
+</p>
+<p align="center">
+  <img align="center" src="page3.png?raw=true" alt="OOPS" width="1030">
 </p>
 
 <br>
