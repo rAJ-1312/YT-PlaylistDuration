@@ -19,15 +19,41 @@ youtube = build('youtube', 'v3', developerKey=key)
 
 # response = request.execute()
 
+#Default Channel ID of Corey Schafer
+#will be used if no parameter is passed.
 channel_ID = "UCCezIgC97PvUuR4_gbFUs5g"
+channel_name = 'Corey Schafer'
+
+
+print(f'Usage Format: python playlist_duration.py "Channel Name"\n')
+
 
 try:
-    channel_ID = sys.argv[1]
-except IndexError as e:
-    print("Using Default channel_ID")
+    channel_name = sys.argv[1]
+    # Search for the channel using the channel name
+    search_response = youtube.search().list(
+        q=channel_name,
+        part='id',
+        type='channel',
+        maxResults=1
+    ).execute()
 
-print(channel_ID)
-print()
+    # Retrieve the channel ID from the search response
+
+    try:
+        channel_ID = search_response['items'][0]['id']['channelId']
+        print(f'Channel Name: {channel_name} \nChannel Id: {channel_ID}\n')
+    except IndexError as e:
+        print(f'No Channel Found for "{channel_name}"')
+except IndexError as e:
+    print(f"Using default Channel name '{channel_name}'")
+    
+
+
+
+
+# print(channel_ID)
+# print()
 
 # print(json.dumps(response,indent=4))
 # print('Channel ID: ',channel_ID)
