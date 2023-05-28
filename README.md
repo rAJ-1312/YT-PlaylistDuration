@@ -3,17 +3,16 @@
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
-- [YT-PlaylistDuration](#yt-playlistduration)
-  - [Table of Contents](#table-of-contents)
-  - [About The Project](#about-the-project)
-  - [Built with](#built-with)
-  - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Get Playlists Duration](#get-playlists-duration)
-  - [For Contribution](#for-contribution)
-  - [License](#license)
+
+- [About The Project](#about-the-project)
+- [Built with](#built-with)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Get Playlists Duration](#get-playlists-duration)
+- [For Contribution](#for-contribution)
+- [License](#license)
 
 
 <!-- ABOUT THE PROJECT -->
