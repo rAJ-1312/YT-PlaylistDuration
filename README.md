@@ -46,6 +46,7 @@ Clone the repo to get started with the bot.
 * Python 3.x
 * Channel_ID: To get the channel ID of any Youtube Channel you can visit this [Get Channel ID](https://commentpicker.com/youtube-channel-id.php) and simply paste any of the recent video link of the channel whose ID you want to find.
 After getting the channel ID you can proceed with the script to get the duration of all the playlists of that channel.
+*After recent change you don't need to worry about getting the Channel ID, you can just pass Channel Name in quotes if multiple words are present, and you will be good to go.
 <br><br>
 
 ## Installation
@@ -68,10 +69,10 @@ touch .env
 API_KEY = *******************************
 ```
 
-5. Run the script passing the channel id as argument
+5. Run the script passing the channel name as argument
 ```sh
 python3 main.py *****************
-e.g. python3 main.py UCCezIgC97PvUuR4_gbFUs5g
+e.g. python3 main.py "Channel Name"
 ```
 
 <!-- USAGE EXAMPLES -->
