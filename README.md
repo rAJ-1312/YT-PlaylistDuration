@@ -4,15 +4,17 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-- [About The Project](#about-the-project)
-- [Built with](#built-with)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Get Playlists Duration](#get-playlists-duration)
-- [For Contribution](#for-contribution)
-- [License](#license)
+- [YT-PlaylistDuration](#yt-playlistduration)
+  - [Table of Contents](#table-of-contents)
+  - [About The Project](#about-the-project)
+  - [Built with](#built-with)
+  - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Get Playlists Duration](#get-playlists-duration)
+  - [For Contribution](#for-contribution)
+  - [License](#license)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -83,16 +85,16 @@ e.g. python3 main.py "Channel Name"
 <br>
 
 <p align="center">
-  <img align="center" src="docs.png?raw=true" alt="OOPS" width="1030">
+  <img align="center" src="ss/docs.png?raw=true" alt="OOPS" width="1030">
 </p>
 <p align="center">
-  <img align="center" src="page1.png?raw=true" alt="OOPS" width="1030">
+  <img align="center" src="ss/page1.png?raw=true" alt="OOPS" width="1030">
 </p>
 <p align="center">
-  <img align="center" src="page2.png?raw=true" alt="OOPS" width="1030">
+  <img align="center" src="ss/page2.png?raw=true" alt="OOPS" width="1030">
 </p>
 <p align="center">
-  <img align="center" src="page3.png?raw=true" alt="OOPS" width="1030">
+  <img align="center" src="ss/page3.png?raw=true" alt="OOPS" width="1030">
 </p>
 
 <br>
